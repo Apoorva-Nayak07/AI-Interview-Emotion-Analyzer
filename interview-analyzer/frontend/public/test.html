@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 { color: #667eea; }
+        .success { color: #10b981; font-size: 48px; }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover { background: #5568d3; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="success">✅</div>
+        <h1>Server is Working!</h1>
+        <p><strong>Frontend Server:</strong> Running on http://localhost:5173</p>
+        <p><strong>Backend Server:</strong> Running on http://localhost:5000</p>
+        <hr>
+        <h2>If you can see this page, the server is working correctly!</h2>
+        <p>The issue might be with the React app. Let's test:</p>
+        <button onclick="window.location.href='/'">Go to Main App</button>
+        <button onclick="testBackend()">Test Backend API</button>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+    
+    <script>
+        async function testBackend() {
+            const result = document.getElementById('result');
+            result.innerHTML = '<p>Testing backend...</p>';
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                const data = await response.json();
+                result.innerHTML = '<p style="color: green;">✅ Backend is working! Response: ' + JSON.stringify(data) + '</p>';
+            } catch (error) {
+                result.innerHTML = '<p style="color: red;">❌ Backend error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
