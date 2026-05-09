@@ -4,6 +4,21 @@ An AI-powered web application that analyzes a candidate’s emotions during mock
 
 ---
 
+## Screenshots
+
+### Landing page
+![Login](landing_page.png)
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Session
+![Dashboard](session.png)
+
+### History
+![Dashboard](history.png)
+
+
 ## 🚀 Features
 
 - 🎥 Real-time webcam-based emotion detection
